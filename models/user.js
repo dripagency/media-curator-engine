@@ -2,15 +2,23 @@
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    bio: DataTypes.TEXT,
+    profilePicture: DataTypes.STRING,
+    website: DataTypes.STRING,
+    instagram: DataTypes.STRING,
+    tiktok: DataTypes.STRING,
+    youtube: DataTypes.STRING,
+    bandcamp: DataTypes.STRING,
+    spotify: DataTypes.STRING,
+    tokens: DataTypes.INTEGER,
+    role: DataTypes.STRING,
+    status: DataTypes.STRING
+
   }, {});
 
   User.associate = function(models) {

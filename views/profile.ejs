@@ -1,0 +1,11 @@
+<!-- views/profile.ejs -->
+
+<h1>Edit Profile</h1>
+<form action="/profile" method="POST" enctype="multipart/form-data">
+  <input type="text" name="firstName" value="<%= user.firstName %>" />
+  <input type="text" name="lastName" value="<%= user.lastName %>" />
+  <textarea name="bio"><%= user.bio %></textarea>
+  <input type="file" name="profilePicture" />
+  <button type="submit">Update Profile</button>
+  <img src="<%= user.profilePicture %>" alt="" />
+</form>

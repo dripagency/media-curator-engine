@@ -14,11 +14,11 @@
 <h2>Your Notes:</h2>
 <% notes.forEach(note => { %>
 <div>
-  <h3><%= note.title %></h3>
+  <h2><%= note.title %></h2>
   <p><%= note.content %></p>
-  <a href="/notes/<%= note.id %>/edit">Edit</a>
-  <form action="/notes/<%= note.id %>/delete" method="POST">
-    <button type="submit">Delete</button>
+  <a href="/notes/edit/<%= note.id %>">Edit</a>
+  <form method="POST" action="/notes/delete/<%= note.id %>">
+    <input type="submit" value="Delete" />
   </form>
 </div>
-<% }); %>
+<% }) %>

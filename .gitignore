@@ -80,3 +80,7 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+
+# aws s3 config
+aws.js
+

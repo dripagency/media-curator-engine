@@ -17,6 +17,49 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING,
+        unique: true
+      },
+      bio: {
+        type: Sequelize.TEXT
+      },
+      profilePicture: {
+        type: Sequelize.STRING
+      },
+      website: {
+        type: Sequelize.STRING
+      },
+      instagram: {
+        type: Sequelize.STRING
+      },
+      tiktok: {
+        type: Sequelize.STRING
+      },
+      youtube: {
+        type: Sequelize.STRING
+      },
+      bandcamp: {
+        type: Sequelize.STRING
+      },
+      spotify: {
+        type: Sequelize.STRING
+      },
+      tokens: {
+        type: Sequelize.INTEGER
+      },
+      role: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

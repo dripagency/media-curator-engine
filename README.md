@@ -1,6 +1,6 @@
 # Media Curator Engine
 
-![GitHub Logo](/logo.png)
+![drip.agency - Media Curator Engine Logo](/logo.png)
 
 Welcome to Media Curator Engine, a comprehensive content curator engine and community platform. The aim is to deliver a robust platform for content creators and consumers, focused on media including music, videos, and social media posts. Share, explore, and engage with diverse content through our all-inclusive platform.
 
@@ -31,7 +31,7 @@ We welcome contributions from the community. Please check our [contributing guid
 
 ## Authors and Acknowledgments
 
-The project is currently being developed and maintained by [drip.agency](https://github.com/dripagency). Special thanks to [Rufus L. Jones III](https://github.com/rufuscodes) for their significant contributions to this project.
+The project is currently being developed and maintained by [drip.agency](https://github.com/dripagency).
 
 ## License
 
@@ -40,9 +40,3 @@ This project is licensed under the MIT license. For more information, see the [L
 Feel free to use and adapt Media Curator Engine for your own purposes. We would appreciate it if you could give us credit.
 
 Check out our project's [issues](https://github.com/dripagency/media-curator-engine/issues) for ideas on how to start contributing. We look forward to seeing what you can add to Media Curator Engine!
-
----
-
-## Like our work? Star our GitHub repo ⭐
-
-Happy coding!
