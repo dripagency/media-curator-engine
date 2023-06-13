@@ -1,0 +1,8 @@
+<h1><%= username %>'s Profile</h1>
+<h2>Notes:</h2>
+<% notes.forEach(note => { %>
+<div>
+  <h3><%= note.title %></h3>
+  <p><%= note.content %></p>
+</div>
+<% }); %>
