@@ -62,17 +62,46 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  db.Note.findAll({ where: { userId: req.user.id } })
-    .then(notes => res.render('dashboard', { username: req.user.username, notes }))
-    .catch(err => console.log(err));
+  db.Note.findAll({
+    where: { userId: req.user.id },
+    order: [['createdAt', 'DESC']] // display the latest notes first
+  })
+  .then(notes => res.render('dashboard', { username: req.user.username, notes }))
+  .catch(err => {
+    console.log(err);
+    req.flash('error_msg', 'Error retrieving notes');
+    res.redirect('/dashboard');
+  });
 });
+
 
 router.post('/notes', ensureAuthenticated, (req, res) => {
   const { title, content } = req.body;
-  db.Note.create({ title, content, userId: req.user.id })
-    .then(note => res.redirect('/dashboard'))
-    .catch(err => console.log(err));
+
+  // Validate input
+  if (!title || !content) {
+    req.flash('error_msg', 'Please fill in all fields');
+    return res.redirect('/dashboard');
+  }
+
+  db.Note.create({
+    title: title.trim(),
+    content: content.trim(),
+    userId: req.user.id
+  })
+  .then(note => {
+    req.flash('success_msg', 'Note created successfully');
+    res.redirect('/dashboard');
+  })
+  .catch(err => {
+    console.log(err);
+    req.flash('error_msg', 'Error creating note');
+    res.redirect('/dashboard');
+  });
 });
+
+
+
 
 router.get('/notes/:id/edit', ensureAuthenticated, (req, res) => {
   db.Note.findByPk(req.params.id)
@@ -81,16 +110,52 @@ router.get('/notes/:id/edit', ensureAuthenticated, (req, res) => {
 });
 
 router.post('/notes/:id/update', ensureAuthenticated, (req, res) => {
-  db.Note.update(req.body, { where: { id: req.params.id } })
-    .then(note => res.redirect('/dashboard'))
+  const { title, content } = req.body;
+
+  // Validate input
+  if (!title || !content) {
+    req.flash('error_msg', 'Please fill in all fields');
+    return res.redirect(`/notes/${req.params.id}/edit`);
+  }
+
+  db.Note.update({
+    title: title.trim(),
+    content: content.trim()
+  },
+  { where: { id: req.params.id, userId: req.user.id } }) // confirm the note belongs to the user
+  .then(note => {
+    req.flash('success_msg', 'Note updated successfully');
+    res.redirect('/dashboard');
+  })
+  .catch(err => {
+    console.log(err);
+    req.flash('error_msg', 'Error updating note');
+    res.redirect('/dashboard');
+  });
+});
+
+router.get('/notes/:id/edit', ensureAuthenticated, (req, res) => {
+  db.Note.findByPk(req.params.id)
+    .then(note => res.render('edit-note', { note, messages: req.flash() }))
     .catch(err => console.log(err));
 });
 
+
+
 router.post('/notes/:id/delete', ensureAuthenticated, (req, res) => {
-  db.Note.destroy({ where: { id: req.params.id } })
-    .then(note => res.redirect('/dashboard'))
-    .catch(err => console.log(err));
+  db.Note.destroy({ where: { id: req.params.id, userId: req.user.id } }) // confirm the note belongs to the user
+  .then(note => {
+    req.flash('success_msg', 'Note deleted successfully');
+    res.redirect('/dashboard');
+  })
+  .catch(err => {
+    console.log(err);
+    req.flash('error_msg', 'Error deleting note');
+    res.redirect('/dashboard');
+  });
 });
+
+
 
 // ACL
 function ensureAuthenticated(req, res, next) {
