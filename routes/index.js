@@ -70,6 +70,32 @@ router.post('/profile', ensureAuthenticated, upload.single('profilePicture'), as
   }
 });
 
+
+// routes/index.js
+
+router.get('/public-profile/:username', async (req, res) => {
+  try {
+    // Query for the user
+    const user = await db.User.findOne({ 
+      where: { username: req.params.username },
+      attributes: ['username', 'firstName', 'lastName', 'bio', 'website', 'instagram', 'tiktok', 'youtube', 'bandcamp', 'spotify'] 
+      // Include only the attributes you want to show on public profile
+    });
+
+    // If no user is found, return a 404
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return the user's public profile
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while retrieving user profile' });
+  }
+});
+
+
 router.get('/login', (req, res) => res.render('login', { title: 'Login' }));
 router.get('/register', (req, res) => res.render('register', { title: 'Register' }));
 

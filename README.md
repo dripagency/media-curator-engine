@@ -1,6 +1,7 @@
 # Media Curator Engine
 
 ![drip.agency - Media Curator Engine Logo](/logo.png)
+The project is currently being developed and maintained by [drip.agency](https://github.com/dripagency).
 
 Welcome to Media Curator Engine, a comprehensive content curator engine and community platform. The aim is to deliver a robust platform for content creators and consumers, focused on media including music, videos, and social media posts. Share, explore, and engage with diverse content through our all-inclusive platform.
 
@@ -24,14 +25,6 @@ Media Curator Engine uses a range of cutting-edge technologies and industry stan
 - **Passport.js** - Secures our application with comprehensive authentication middleware.
 - **Jest** - Ensures our code quality through extensive testing.
 - **Socket.io** (Future addition) - For real-time, bidirectional and event-based communication, making our chatrooms even more engaging.
-
-## Contributing
-
-We welcome contributions from the community. Please check our [contributing guide](CONTRIBUTING.md) for more information.
-
-## Authors and Acknowledgments
-
-The project is currently being developed and maintained by [drip.agency](https://github.com/dripagency).
 
 ## License
 

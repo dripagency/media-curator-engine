@@ -1,11 +1,67 @@
-<!-- views/profile.ejs -->
-
 <h1>Edit Profile</h1>
 <form action="/profile" method="POST" enctype="multipart/form-data">
-  <input type="text" name="firstName" value="<%= user.firstName %>" />
-  <input type="text" name="lastName" value="<%= user.lastName %>" />
-  <textarea name="bio"><%= user.bio %></textarea>
+  <input
+    type="text"
+    name="firstName"
+    value="<%= user.firstName %>"
+    placeholder="First Name"
+  />
+  <input
+    type="text"
+    name="lastName"
+    value="<%= user.lastName %>"
+    placeholder="Last Name"
+  />
+  <input
+    type="text"
+    name="username"
+    value="<%= user.username %>"
+    placeholder="Username"
+  />
+  <input
+    type="email"
+    name="email"
+    value="<%= user.email %>"
+    placeholder="Email"
+  />
+  <textarea name="bio" placeholder="Bio"><%= user.bio %></textarea>
+  <input
+    type="text"
+    name="website"
+    value="<%= user.website %>"
+    placeholder="Website"
+  />
+  <input
+    type="text"
+    name="instagram"
+    value="<%= user.instagram %>"
+    placeholder="Instagram"
+  />
+  <input
+    type="text"
+    name="tiktok"
+    value="<%= user.tiktok %>"
+    placeholder="TikTok"
+  />
+  <input
+    type="text"
+    name="youtube"
+    value="<%= user.youtube %>"
+    placeholder="YouTube"
+  />
+  <input
+    type="text"
+    name="bandcamp"
+    value="<%= user.bandcamp %>"
+    placeholder="Bandcamp"
+  />
+  <input
+    type="text"
+    name="spotify"
+    value="<%= user.spotify %>"
+    placeholder="Spotify"
+  />
   <input type="file" name="profilePicture" />
   <button type="submit">Update Profile</button>
-  <img src="<%= user.profilePicture %>" alt="" />
+  <img src="<%= user.profilePicture %>" alt="Profile Picture" />
 </form>
